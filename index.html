@@ -3,12 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Page</title>
+    <title>Test Website</title>
 </head>
 <body>
-    <h1>Welcome to My GitHub Page!</h1>
-    <button onclick="sayHello()">Click Me</button>
-
-    <script src="script.js"></script>
+    <h1>Welcome to Our Website!</h1>
+    <p>This is an example website that includes the FraudLabs Pro script.</p>
+    
+    <script>
+        (function(){
+            function s() {
+                var e = document.createElement('script');
+                e.type = 'text/javascript';
+                e.async = true;
+                e.src = ('https:' === document.location.protocol ? 'https://' : 'http://') + 'cdn.fraudlabspro.com/s.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(e, s);
+            }			  
+            (window.attachEvent) ? window.attachEvent('onload', s) : window.addEventListener('load', s, false);
+        })();
+    </script>
 </body>
 </html>
