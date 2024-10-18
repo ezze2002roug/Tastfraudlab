@@ -21,37 +21,6 @@
             }			  
             (window.attachEvent) ? window.attachEvent('onload', s) : window.addEventListener('load', s, false);
         })();
-        
-        function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return parts.pop().split(';').shift();
-        }
-
-        const flpChecksum = getCookie('flp_checksum');
-        console.log('flp_checksum:', flpChecksum);
-
-        if (flpChecksum) {
-            fetch('https://api.fraudlabspro.com/v2/order/screen', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer BXUZABI0BUHLX39XNQINOICMXNKQ7G8N'
-                },
-                body: JSON.stringify({
-                    flp_checksum: flpChecksum,
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        } else {
-            console.log('flp_checksum is not found or invalid.');
-        }
     </script>
 </body>
 </html>
