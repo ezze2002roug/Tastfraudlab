@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Website</title>
+  <meta charset="UTF-8">
+  <title>VisitorQuery Test</title>
 </head>
 <body>
-    <h1>Welcome to Our Website!</h1>
-    <p>This is an example website that includes the FraudLabs Pro script.</p>
-    
-    <script>
-        (function(){
-            function s() {
-                var e = document.createElement('script');
-                e.type = 'text/javascript';
-                e.async = true;
-                e.src = ('https:' === document.location.protocol ? 'https://' : 'http://') + 'cdn.fraudlabspro.com/s.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(e, s);
-            }			  
-            (window.attachEvent) ? window.attachEvent('onload', s) : window.addEventListener('load', s, false);
-        })();
-    </script>
+  <h1>مرحباً بك في صفحة الاختبار</h1>
+  <p>سيتم فحص اتصالك (بروكسي / VPN) عبر VisitorQuery...</p>
+
+  <script src="https://cdn.visitorquery.com/visitorquery.js"></script>
+  <script type="text/javascript">
+    window.addEventListener('load', () => {
+      window.VisitorQuery.run({
+        ApiKey   : "27f372b0-07bb-4139-aa49-40c8c2fa0c5c",
+        SessionId: "test-session"
+      });
+    });
+  </script>
 </body>
 </html>
+
