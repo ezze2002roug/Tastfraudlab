@@ -1,22 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>VisitorQuery Test</title>
-</head>
-<body>
-  <h1>مرحباً بك في صفحة الاختبار</h1>
-  <p>سيتم فحص اتصالك (بروكسي / VPN) عبر VisitorQuery...</p>
+<script src="https://cdn.visitorquery.com/visitorquery.js"></script>
+<script type="text/javascript">
+	function generateSessionId() {
+		// توليد نص عشوائي (مثلاً 16 خانة)
+		return 'session-' + Math.random().toString(36).substring(2, 15);
+	}
 
-  <script src="https://cdn.visitorquery.com/visitorquery.js"></script>
-  <script type="text/javascript">
-    window.addEventListener('load', () => {
-      window.VisitorQuery.run({
-        ApiKey   : "27f372b0-07bb-4139-aa49-40c8c2fa0c5c",
-        SessionId: "test-session"
-      });
-    });
-  </script>
-</body>
-</html>
+	window.addEventListener('load', () => {
+		// نخزن الـ SessionId في sessionStorage حتى يبقى ثابت طول الجلسة
+		let sessionId = sessionStorage.getItem("visitor_session_id");
+		if (!sessionId) {
+			sessionId = generateSessionId();
+			sessionStorage.setItem("visitor_session_id", sessionId);
+		}
+
+		// تشغيل VisitorQuery
+		window.VisitorQuery.run({
+			ApiKey   : "27f372b0-07bb-4139-aa49-40c8c2fa0c5c", // المفتاح العام تبعك
+			SessionId: sessionId
+		});
+	});
+</script>
+
 
